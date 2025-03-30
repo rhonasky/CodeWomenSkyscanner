@@ -1,27 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>Accessibility 101</h1>
-    <form action="/submit" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required><br><br>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <input type="submit" value="Submit">
-    </form>
-</body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Accessibility 101</h1>
+    </header>
+    <main>
+      <form
+        id="myForm"
+        action="/submit"
+        method="post"
+        title="personal info"
+        novalidate
+      >
+        <label for="name"
+          >Name:<span class="required">*</span>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="John Smith"
+            required
+          /><br /><br />
+        </label>
+
+        <label for="email"
+          >Email:
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="john@test.com"
+          /><br /><br />
+        </label>
+
+        <label for="phone"
+          >Phone Number:
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="+34000000"
+          /><br /><br />
+        </label>
+
+        <label for="password"
+          >Password:<span class="required">*</span>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="******"
+            required
+          /><br /><br />
+        </label>
+
+        <input type="submit" value="Submit" />
+      </form>
+
+      <script>
+          const form = document.getElementById("myForm");
+               
+          form.addEventListener("submit", function (event) {
+                if (!this.checkValidity()) {
+                  event.preventDefault(); // Prevent submission if there are invalid fields
+                  this.classList.add("submitted"); // Add the class to trigger styles
+                
+                }else {
+                    event.preventDefault();
+                    form.reset();
+                    this.classList.remove("submitted");
+                    alert("Form submitted successfully!");
+                }
+            });
+      </script>
+    </main>
+  </body>
 </html>
