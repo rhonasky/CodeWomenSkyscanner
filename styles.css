@@ -54,6 +54,10 @@ input {
     border-radius: 3px;
 }
 
+input::placeholder { 
+  opacity: 0.3;   
+}
+
 .submitted input:invalid {
     border-color: red;
     border-width: 2px;
